@@ -1,26 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Navbar/>
+    <div class="container">
+        <!-- <img src ="./assets/logo_TT_transp.png"> -->
+        <h1>asihdfijhsAcompanhamento de Vendas</h1>
+
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+ import Navbar from './components/Navbar.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+      // Navbar
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<!--
+     paleta de cores
+     #000
+     #21252a
+     #808080
+     #f2f2f2
+     #c0c0c0
+     #fff
+     #3c59ff
+-->
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  visibility: none;
 }
 </style>

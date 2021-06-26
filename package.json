@@ -1,5 +1,5 @@
 {
-  "name": "desafio",
+  "name": "Desafio T. T. Burger",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,6 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "bootstrap": "^5.0.2",
+    "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "vue": "^3.0.0"
   },
