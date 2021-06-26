@@ -1,27 +1,18 @@
 {
-  "name": "desafio-t-t-burger",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "desafio",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server",
-    "dev": "nodemon server"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BrunoSumar/Desafio-T-T-Burger.git"
-  },
-  "author": "Bruno Sumar",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BrunoSumar/Desafio-T-T-Burger/issues"
-  },
-  "homepage": "https://github.com/BrunoSumar/Desafio-T-T-Burger#readme",
   "dependencies": {
-    "fastify": "^3.18.0"
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0"
   }
 }
