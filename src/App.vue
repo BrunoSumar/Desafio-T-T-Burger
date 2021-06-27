@@ -3,13 +3,13 @@
         <Navbar />
         <b-container>
             <b-row>
-              <img class="w-50 mx-auto" src ="./assets/logo_TT_transp.png">
+              <img class="logo mx-auto" src ="./assets/logo_TT_transp.png">
             </b-row>
             <b-row>
-              <h1 class="mx-auto text-grey br-font">Acompanhamento de Vendas</h1>
+              <h1 class="mx-auto mb-2 text-grey br-font">Acompanhamento de Vendas</h1>
             </b-row>
             <b-row>
-                <TabelaVendas />
+                <TabelaVendas class="mx-auto"/>
             </b-row>
 
         </b-container>
@@ -39,22 +39,19 @@ export default {
     #c0c0c0
     #fff
     #3c59ff
+    #3c59ff
 */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
-    border: 1px solid red;
-}
+    /* border: 1px solid red; */
+ }
 
 html,
 body {
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.container {
-  visibility: none;
+    font-size: 1.15em;
 }
 
 @font-face {
@@ -72,4 +69,9 @@ body {
 .bg-grey {
   background-color: #21252a;
 }
+
+ img.logo {
+     width: 40%;
+     margin: -5% 0;
+ }
 </style>

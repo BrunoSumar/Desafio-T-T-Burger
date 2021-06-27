@@ -1,39 +1,127 @@
 <template>
-  <div>
-      <b-table
-          :fields="fields"
-          head-variant="dark"
-          :items="items"
-          sticky-header
-      >
-        <template #cell(Data)="data">
-            {{ items[data.index].age + 1 }}
-        </template>
-      </b-table>
-  </div>
+    <div>
+        <b-table
+            :fields="fields"
+            :items="items"
+            head-variant="dark"
+            striped
+            hover
+            foot-clone
+            responsive
+            foot-variant="light"
+        >
+            <template #head(loja)="data">
+                <b-form-datepicker
+                    size="sm"
+                    :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
+                    class="text-nowrap"
+                >
+                </b-form-datepicker>
+            </template>
+
+            <template #cell(loja)="data">
+                <span class="text-blue">{{data.item.loja}}</span>
+            </template>
+            <template #cell(atingimento)="data">
+                {{ (data.item.vendas/data.item.meta_valor).toFixed(3) }}
+            </template>
+            <template #cell(produtos_cliente)="data">
+                {{ (data.item.q_produtos/data.item.q_produtos_burger).toFixed(3) }}
+                <b-icon v-if="data.item.q_produtos>=data.item.meta_prod_clt*data.item.q_produtos_burger"
+                        icon="arrow-up" variant="success"
+                ></b-icon>
+                <b-icon v-else icon="arrow-down" variant="danger"></b-icon>
+            </template>
+            <template #cell(ticket_medio)="data">
+                {{ (data.item.vendas/data.item.q_produtos_burger).toFixed(3) }}
+            </template>
+
+
+            <template variant="info" #foot(loja)="data">
+                <span class="text-blue">Total</span>
+            </template>
+            <template #foot(vendas)="data">
+                {{total.vendas}}
+            </template>
+            <template #foot(meta_valor)="data">
+                {{total.meta_valor}}
+            </template>
+            <template #foot(atingimento)="data">
+                {{ (total.vendas/total.meta_valor).toFixed(3) }}
+            </template>
+            <template #foot(produtos_cliente)="data">
+                {{ (total.q_produtos/total.q_produtos_burger).toFixed(3) }}
+            </template>
+            <template #foot(ticket_medio)="data">
+                {{ (total.vendas/total.q_produtos_burger).toFixed(3) }}
+            </template>
+        </b-table>
+    </div>
 </template>
 
 
 <script>
-export default {
+ export default {
      name: 'Navbar',
      data() {
-      return {
-          fields: ['Data', 'Venda(R$)','Meta(R$)','Atingiemnto de meta (R$)','Quantidade de produtos / cliente','Ticket médio / cliente'],
-          // fields: ['first_name', 'last_name', 'age'],
-          items: [
-          { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-          { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-          { age: 89, first_name: 'Geneva', last_name: 'Wilson' }
-        ]
-      }
+         return {
+             fields: [
+                 'loja',
+                 // { key: 'loja', label: '' },
+                 { key: 'vendas', label: 'Venda(R$)' },
+                 { key: 'meta_valor', label: ' Meta(R$)' },
+                 { key: 'atingimento', label: ' Atingiemnto de meta (R$)' },
+                 { key: 'produtos_cliente', label: 'Quantidade de produtos / cliente' },
+                 { key: 'ticket_medio', label: 'Ticket médio / cliente' },
+             ],
+             // 'Data', 'venda(rs)','Meta(R$)','Atingiemnto de meta (R$)','Quantidade de produtos / cliente','Ticket médio / cliente'],
+             // fields: ['first_name', 'last_name', 'age'],
+             items: [
+                 // {loja: 'local',vendas: 4, meta_valor: 3, q_produtos:5,q_produtos_burger: 3},
+                 {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
+                 {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
+                 {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
+                 {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
+             ],
+             total: {},
+         }
+     },
+     methods: {
+         calcTotal: function() {
+             return this.items.reduce((ac, arr) => {
+                 return {
+                     vendas: ac.vendas +arr.vendas,
+                     meta_valor: ac.meta_valor + arr.meta_valor,
+                     meta_prod_clt: ac.meta_prod_clt + arr.meta_prod_clt,
+                     q_produtos:ac.q_produtos + arr.q_produtos,
+                     q_produtos_burger: ac.q_produtos_burger + arr.q_produtos_burger,
+                 }
+             },{
+                 vendas: 0, meta_valor: 0, meta_prod_clt: 0, q_produtos:0, q_produtos_burger: 0
+             })
+         }
+     },
+    created: function () {
+        this.total = this.calcTotal()
     }
-}
+ }
 </script>
 
 <style>
-thead {
-    background-color: #21252a !important;
-    border: 3px yellow solid;
-}
+ thead th{
+     background-color: #21252a !important;
+ }
+
+ .text-blue {
+     color: #3c59ff !important;
+ }
+ td, th {
+     text-align: center !important;
+     white-space: nowrap;
+ }
+ td, tfoot th {
+     font-size: 1.2em;
+ }
+ /* -form-datepicker {
+    } */
 </style>
