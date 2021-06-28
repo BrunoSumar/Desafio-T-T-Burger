@@ -1,0 +1,19 @@
+{
+  "name": "api-desafio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "author": "Bruno Sumar",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "fastify": "^3.18.0",
+    "fastify-static": "^4.2.2"
+  }
+}

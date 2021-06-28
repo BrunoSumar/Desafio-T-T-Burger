@@ -11,6 +11,7 @@
             foot-clone
             foot-variant="light"
         >
+            <!-- Table head -->
             <template #head(loja)="data">
                 <b-form-datepicker
                     size="sm"
@@ -20,6 +21,7 @@
                 </b-form-datepicker>
             </template>
 
+            <!-- table body -->
             <template #cell(loja)="data">
                 <span class="text-blue">{{data.item.loja}}</span>
             </template>
@@ -37,7 +39,7 @@
                 {{ (data.item.vendas/data.item.q_produtos_burger).toFixed(3) }}
             </template>
 
-
+            <!-- table foot -->
             <template variant="info" #foot(loja)="data">
                 <span class="text-blue">Total</span>
             </template>
@@ -116,15 +118,22 @@
  .text-blue {
      color: #3d59ff !important;
  }
+
  td, th, th div label {
      text-align: center !important;
-     white-space: nowrap !important;
+     align-self: center !important;
  }
+
  td, tfoot th {
      font-size: 1.22em;
  }
+
  tfoot tr th{
      background-color: #c0c0c0 !important;
      color: #2f2f2f !important;
+ }
+
+ th div label {
+     white-space: nowrap !important;
  }
 </style>

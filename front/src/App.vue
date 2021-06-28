@@ -3,7 +3,7 @@
         <Navbar />
         <b-container>
             <b-row>
-              <img class="logo mx-auto" src ="./assets/logo_TT_transp.png">
+              <img id="logo" class="mx-auto" src ="./assets/logo_TT_transp.png">
             </b-row>
             <b-row>
               <h1 class="mx-auto mb-2 text-grey br-font">Acompanhamento de Vendas</h1>
@@ -70,8 +70,8 @@ body {
   background-color: #21252a;
 }
 
- img.logo {
-     width: 40%;
-     margin: -5% 0;
- }
+#logo {
+  width: 40%;
+  margin: -5% 0;
+}
 </style>
