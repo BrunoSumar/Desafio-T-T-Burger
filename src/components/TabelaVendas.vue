@@ -6,15 +6,16 @@
             head-variant="dark"
             striped
             hover
-            foot-clone
+            bordered
             responsive
+            foot-clone
             foot-variant="light"
         >
             <template #head(loja)="data">
                 <b-form-datepicker
                     size="sm"
                     :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
-                    class="text-nowrap"
+                    placeholder="--/--/----"
                 >
                 </b-form-datepicker>
             </template>
@@ -113,15 +114,17 @@
  }
 
  .text-blue {
-     color: #3c59ff !important;
+     color: #3d59ff !important;
  }
- td, th {
+ td, th, th div label {
      text-align: center !important;
-     white-space: nowrap;
+     white-space: nowrap !important;
  }
  td, tfoot th {
-     font-size: 1.2em;
+     font-size: 1.22em;
  }
- /* -form-datepicker {
-    } */
+ tfoot tr th{
+     background-color: #c0c0c0 !important;
+     color: #2f2f2f !important;
+ }
 </style>
