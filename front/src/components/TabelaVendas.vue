@@ -1,15 +1,15 @@
 <template>
     <div>
         <b-table
-            :fields="fields"
-            :items="items"
             head-variant="dark"
             striped
             hover
             bordered
-            responsive
+            responsive="lg"
             foot-clone
             foot-variant="light"
+            :fields="fields"
+            :items="items"
         >
             <!-- Table head -->
             <template #head(loja)="data">
@@ -44,19 +44,19 @@
                 <span class="text-blue">Total</span>
             </template>
             <template #foot(vendas)="data">
-                {{total.vendas}}
+                {{total.vendas || '-'}}
             </template>
             <template #foot(meta_valor)="data">
-                {{total.meta_valor}}
+                {{total.meta_valor || '-'}}
             </template>
             <template #foot(atingimento)="data">
-                {{ (total.vendas/total.meta_valor).toFixed(3) }}
+                {{ items.length>0 ? ((total.vendas/total.meta_valor).toFixed(3)) : '-'}}
             </template>
             <template #foot(produtos_cliente)="data">
-                {{ (total.q_produtos/total.q_produtos_burger).toFixed(3) }}
+                {{ items.length>0 ? (total.q_produtos/total.q_produtos_burger).toFixed(3) : '-'}}
             </template>
             <template #foot(ticket_medio)="data">
-                {{ (total.vendas/total.q_produtos_burger).toFixed(3) }}
+                {{ items.length>0 ? (total.vendas/total.q_produtos_burger).toFixed(3) : '-'}}
             </template>
         </b-table>
     </div>
@@ -102,9 +102,17 @@
              },{
                  vendas: 0, meta_valor: 0, meta_prod_clt: 0, q_produtos:0, q_produtos_burger: 0
              })
-         }
+         },
+         getMetaInfo: async function() {
+             const res = await fetch('../api/getMetasInfo')
+             const data = await res.json()
+
+             return data
+         },
      },
-    created: function () {
+    created: async function () {
+        this.items = await this.getMetaInfo()
+        // this.total = await this.getMetaInfo()
         this.total = this.calcTotal()
     }
  }
@@ -121,7 +129,6 @@
 
  td, th, th div label {
      text-align: center !important;
-     align-self: center !important;
  }
 
  td, tfoot th {

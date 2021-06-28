@@ -21,14 +21,14 @@ fastify.get('/', function (req, reply) {
 })
 
 fastify.get('/api/getMetasInfo', function (req, reply) {
-    return reply.send([
+  return reply.send(JSON.stringify([
         {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
         {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
         {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
         {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
         {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
         {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
-    ])
+    ]))
 })
 // app.get('/', (req,res) => // {
 //   res.sendFile(path.join(__dirname, '../my-app/build/index.html'));

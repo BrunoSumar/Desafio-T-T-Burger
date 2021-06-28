@@ -9,7 +9,7 @@
               <h1 class="mx-auto mb-2 text-grey br-font">Acompanhamento de Vendas</h1>
             </b-row>
             <b-row>
-                <TabelaVendas class="mx-auto"/>
+                <TabelaVendas class="overflow-auto mx-auto"/>
             </b-row>
 
         </b-container>
@@ -52,7 +52,7 @@ html,
 body {
   font-family: Arial, Helvetica, sans-serif;
     font-size: 1.15em;
-}
+ }
 
 @font-face {
   font-family: BrothersRegular;
@@ -60,6 +60,10 @@ body {
 }
 .br-font {
   font-family: BrothersRegular !important;
+}
+
+h1 {
+  text-align: center !important;
 }
 
 .text-grey {
