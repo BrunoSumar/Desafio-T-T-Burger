@@ -5,7 +5,7 @@
             striped
             hover
             bordered
-            responsive="lg"
+            responsive
             foot-clone
             foot-variant="light"
             :fields="fields"
@@ -17,6 +17,8 @@
                     size="sm"
                     :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
                     placeholder="--/--/----"
+                    v-model="date"
+                    @input="updateVendas"
                 >
                 </b-form-datepicker>
             </template>
@@ -41,7 +43,8 @@
 
             <!-- table foot -->
             <template variant="info" #foot(loja)="data">
-                <span class="text-blue">Total</span>
+                <!-- <span class="text-blue">Total</span> -->
+                {{date}}
             </template>
             <template #foot(vendas)="data">
                 {{total.vendas || '-'}}
@@ -70,7 +73,6 @@
          return {
              fields: [
                  'loja',
-                 // { key: 'loja', label: '' },
                  { key: 'vendas', label: 'Venda(R$)' },
                  { key: 'meta_valor', label: ' Meta(R$)' },
                  { key: 'atingimento', label: ' Atingiemnto de meta (R$)' },
@@ -79,14 +81,9 @@
              ],
              // 'Data', 'venda(rs)','Meta(R$)','Atingiemnto de meta (R$)','Quantidade de produtos / cliente','Ticket médio / cliente'],
              // fields: ['first_name', 'last_name', 'age'],
-             items: [
-                 // {loja: 'local',vendas: 4, meta_valor: 3, q_produtos:5,q_produtos_burger: 3},
-                 {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
-                 {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
-                 {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
-                 {loja: 'local',vendas: 4, meta_valor: 3, meta_prod_clt: 3, q_produtos:5, q_produtos_burger: 1},
-             ],
+             items: [],
              total: {},
+             date: '',
          }
      },
      methods: {
@@ -103,18 +100,18 @@
                  vendas: 0, meta_valor: 0, meta_prod_clt: 0, q_produtos:0, q_produtos_burger: 0
              })
          },
-         getMetaInfo: async function() {
-             const res = await fetch('../api/getMetasInfo')
-             const data = await res.json()
-
-             return data
+         getVendas: async function() {
+             const res = await fetch('../api/getVendas/'+this.date)
+             return  await res.json()
          },
+         updateVendas: async function () {
+             this.items = await this.getVendas()
+             this.total = this.calcTotal()
+         }
      },
-    created: async function () {
-        this.items = await this.getMetaInfo()
-        // this.total = await this.getMetaInfo()
-        this.total = this.calcTotal()
-    }
+     created: async function () {
+         this.updateVendas()
+     }
  }
 </script>
 
