@@ -1,6 +1,7 @@
 const frontOpts = {
     handler: (req, reply) => {
-        return reply.sendFile('index.html')
+        // return reply.sendFile('index.html')
+        return reply.send({a: 234234})
     },
 }
 
