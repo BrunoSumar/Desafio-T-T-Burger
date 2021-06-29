@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "postinstall": "cd front && npm run build && cd ..",
+    "postinstall": "cd front && npm i && npm run build && cd ..",
     "start": "node server.js"
   },
   "author": "Bruno Sumar",
