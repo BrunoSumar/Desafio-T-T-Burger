@@ -43,8 +43,7 @@
 
             <!-- table foot -->
             <template variant="info" #foot(loja)="data">
-                <!-- <span class="text-blue">Total</span> -->
-                {{date}}
+                <span class="text-blue">Total</span>
             </template>
             <template #foot(vendas)="data">
                 {{total.vendas || '-'}}
