@@ -74,7 +74,7 @@
                  'loja',
                  { key: 'vendas', label: 'Venda(R$)' },
                  { key: 'meta_valor', label: ' Meta(R$)' },
-                 { key: 'atingimento', label: ' Atingiemnto de meta (R$)' },
+                 { key: 'atingimento', label: ' Atingimento de meta (R$)' },
                  { key: 'produtos_cliente', label: 'Quantidade de produtos / cliente' },
                  { key: 'ticket_medio', label: 'Ticket médio / cliente' },
              ],

@@ -22,11 +22,12 @@ fastify.register(require('./routes/api'))
 //   res.sendFile(path.join(__dirname, '../my-app/build/index.html'));
 // });
 
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 const start = async () => {
   try {
     await fastify.listen(PORT)
+    console.log(`App is running on port ${ PORT }`);
   } catch (error) {
     fastify.log.error(error)
     process.exit(1)
