@@ -3,7 +3,7 @@ const fastify = require('fastify')()
 const path = require('path')
 
 fastify.register(require('fastify-static'), {
-  root: path.join(__dirname, './front/dist'),
+  root: path.join(__dirname, '../front/dist'),
 })
 
 fastify.register(require('./routes/front'))
