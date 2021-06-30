@@ -11,7 +11,6 @@
             <b-row>
                 <TabelaVendas class="overflow-auto mx-auto"/>
             </b-row>
-
         </b-container>
     </div>
 </template>
@@ -45,7 +44,6 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-    /* border: 1px solid red; */
  }
 
 html,
@@ -76,6 +74,6 @@ h1 {
 
 #logo {
   width: 40%;
-  margin: -5% 0;
+  margin: -6% 0;
 }
 </style>

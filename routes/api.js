@@ -21,6 +21,7 @@ const vendasOpts = {
         },
     },
     handler: (req, reply) => {
+        // requisição teste
         return reply.send(JSON.stringify([
             {loja: 'Arpoador',vendas: 94, meta_valor: 233, meta_prod_clt: 435.4, q_produtos:501, q_produtos_burger: 231},
             {loja: 'Leblon',vendas: 27, meta_valor: 312, meta_prod_clt: 3.50, q_produtos:235, q_produtos_burger: 12121},

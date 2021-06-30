@@ -12,7 +12,7 @@
             :items="items"
         >
             <!-- Table head -->
-            <template #head(loja)="data">
+            <template #head(loja)>
                 <b-form-datepicker
                     size="sm"
                     :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
@@ -78,16 +78,14 @@
                  { key: 'produtos_cliente', label: 'Quantidade de produtos / cliente' },
                  { key: 'ticket_medio', label: 'Ticket médio / cliente' },
              ],
-             // 'Data', 'venda(rs)','Meta(R$)','Atingiemnto de meta (R$)','Quantidade de produtos / cliente','Ticket médio / cliente'],
-             // fields: ['first_name', 'last_name', 'age'],
              items: [],
              total: {},
              date: '',
          }
      },
      methods: {
-         calcTotal: function() {
-             return this.items.reduce((ac, arr) => {
+         calcTotal: function(items) {
+             return items.reduce((ac, arr) => {
                  return {
                      vendas: ac.vendas +arr.vendas,
                      meta_valor: ac.meta_valor + arr.meta_valor,
@@ -105,7 +103,7 @@
          },
          updateVendas: async function () {
              this.items = await this.getVendas()
-             this.total = this.calcTotal()
+             this.total = this.calcTotal(this.items)
          }
      },
      created: async function () {
