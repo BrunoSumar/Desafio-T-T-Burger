@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 8080
 
 const start = async () => {
   try {
-    await fastify.listen(PORT)
+    await fastify.listen(PORT, '0.0.0.0')
     console.log(`App is running on port ${ PORT }`);
   } catch (error) {
     fastify.log.error(error)
